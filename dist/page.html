@@ -92,10 +92,7 @@
               <p class="footer__info-text">Keffiyeh poutine etsy, paleo cray put a bird on it microdosing schlitz you
                 probably occupy</p>
               <a class="info-email" href="mailto:ouremailaddress@email.com">ouremailaddress@email.com</a>
-              <form class="footer__form">
-                <input class="footer__form-input" type="email" placeholder="Subscribe by email">
-                <button class="footer__form-button" type="submit">Send</button>
-              </form>
+              <button class="footer__info-button" type="button" data-first-modal-open>Subscribe</button>
             </div>
             <ul class="footer__social">
               <li class="footer__social-item"><a class="footer__social-link footer__social-link--facebook"
@@ -126,6 +123,19 @@
         </div>
       </div>
     </footer>
+  </div>
+
+  <div class="backdrop is-hidden" data-first-modal id="modal__backdrop" >
+    <div class="modal" id="modal"> 
+      <a class="modal__button" data-first-modal-close></a>
+            <div class="modal__window">
+              <h3 class="modal__window-title"> Subscribe to us by email!</h3>
+              <form class="modal__form" id="modal__form">
+                <input class="modal__form-input" type="email" required placeholder="Subscribe by email" id="subscribe__email">
+                <button class="modal__form-button" type="submit" id="modal__form-button">Send</button>
+              </form>
+      </div>
+    </div>
   </div>
 
 

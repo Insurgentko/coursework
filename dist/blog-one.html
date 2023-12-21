@@ -167,17 +167,7 @@
                   <button class="blog-one__reply">Reply</button>
                 </div>
               </div>
-              <form action="" class="blog-one__form">
-                <h4 class="blog-one__form-title">
-                  Post a Comment
-                </h4>
-                <textarea class="blog-one__form-textarea" placeholder="Your comment"></textarea>
-                <input class="blog-one__form-input" type="text" placeholder="Your name">
-                <input class="blog-one__form-input" type="email" placeholder="Your e-mail">
-                <label class="blog-one__form-label">
-                  <input class="blog-one__form-labelinput" type="checkbox">Remember me</label>
-                <button class="blog-one__form-btn" type="submit">Submit</button>
-              </form>
+              <button class="footer__info-button" type="button" data-second-modal-open>Post a Comment</button>
             </div>
 
             <aside class="aside">
@@ -262,7 +252,7 @@
                 </li>
                 <li class="blog__social-item">
                   <a class="blog__social-link" href="#">
-                    <img class=blog__social-link" src="images/pinterest.svg" alt="pinterest">
+                    <img class=blog__social-link src="images/pinterest.svg" alt="pinterest">
                   </a>
                 </li>
                 <li class="blog__social-item">
@@ -292,10 +282,7 @@
               <p class="footer__info-text">Keffiyeh poutine etsy, paleo cray put a bird on it microdosing schlitz you
                 probably occupy</p>
               <a class="info-email" href="mailto:ouremailaddress@email.com">ouremailaddress@email.com</a>
-              <form class="footer__form">
-                <input class="footer__form-input" type="email" placeholder="Subscribe by email">
-                <button class="footer__form-button" type="submit">Send</button>
-              </form>
+              <button class="footer__info-button" type="button" data-first-modal-open>Subscribe</button>
             </div>
             <ul class="footer__social">
               <li class="footer__social-item"><a class="footer__social-link footer__social-link--facebook"
@@ -328,7 +315,37 @@
     </footer>
   </div>
 
+  <div class="backdrop is-hidden" data-first-modal id="modal__backdrop" >
+    <div class="modal" id="modal"> 
+      <a class="modal__button" data-first-modal-close></a>
+            <div class="modal__window">
+              <h3 class="modal__window-title"> Subscribe to us by email!</h3>
+              <form class="modal__form" id="modal__form">
+                <input class="modal__form-input" type="email" required placeholder="Subscribe by email" id="subscribe__email">
+                <button class="modal__form-button" type="submit" id="modal__form-button">Send</button>
+              </form>
+      </div>
+    </div>
+  </div>
 
+  <div class="backdrop is-hidden" data-second-modal id="blog-one__backdrop">
+    <div class="blog-one__modal" id="blog-one__modal"> 
+      <a class="modal__button" data-second-modal-close></a>
+            <div class="blog-one__modal-window">
+              <form action="" class="blog-one__form" id="blog-one__form">
+                <h4 class="blog-one__form-title">
+                  Post a Comment
+                </h4>
+                <textarea class="blog-one__form-textarea" required placeholder="Your comment" id="blog-one__comment"></textarea>
+                <input class="blog-one__form-input" type="text" required placeholder="Your name" id="blog-one__name">
+                <input class="blog-one__form-input" type="email" required placeholder="Your e-mail" id="blog-one__email">
+                <label class="blog-one__form-label">
+                  <input class="blog-one__form-labelinput" type="checkbox">Remember me</label>
+                <button class="blog-one__form-btn" type="submit" id="blog-one__modal-button">Submit</button>
+              </form>
+      </div>
+    </div>
+  </div>
 
   <script src="js/main.min.js"></script>
 </body>

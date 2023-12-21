@@ -85,3 +85,162 @@ $(function () {
     },
   });
 });
+
+document.addEventListener(
+  'DOMContentLoaded',
+  function () {
+    const modals = [
+      'data-first-modal',
+      'data-second-modal',
+    ];
+
+    modals.forEach(element => {
+      const openModalSelector = element + '-open';
+      const closeModalSelector = element + '-close';
+
+      const openModalBtns = document.querySelectorAll(`[${openModalSelector}]`);
+      const closeModalBtns = document.querySelectorAll(
+        `[${closeModalSelector}]`
+      );
+      const modal = document.querySelector(`[${element}]`);
+
+      if (!modal) logModalError('Can`t find Modal with attribute ' + modal);
+      if (openModalBtns.length === 0)
+        logModalError(
+          'Can`t find Open modal button with attribute ' + openModalSelector
+        );
+      if (closeModalBtns.length === 0)
+        logModalError(
+          'Can`t find Close modal button with attribute ' + closeModalSelector
+        );
+      if (!modal || openModalBtns.length === 0 || closeModalBtns.length === 0)
+        return;
+
+      openModalBtns.forEach(openBtn =>
+        openBtn.addEventListener('click', toggleModal)
+      );
+      closeModalBtns.forEach(closeBtn =>
+        closeBtn.addEventListener('click', toggleModal)
+      );
+
+      function toggleModal() {
+        document.body.classList.toggle('modal-open');
+        modal.classList.toggle('is-hidden');
+      }
+    });
+  },
+  false
+);
+
+function logModalError(text) {
+  const styles = 'color: #bada55';
+  console.log('%c' + text, styles);
+}
+
+const form = document.querySelector("#modal__form");
+
+const modal = document.querySelector("#modal");
+
+const backdrop = document.querySelector("#modal__backdrop");
+
+const modal__button = document.querySelector("#modal__form-button");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    var email = document.getElementById("subscribe__email").value;
+
+    var subscribe = `New subscriber with email ${email}`;
+
+    var token = "6846540443:AAGGI8VumuKvVGYdKDHcDShKNDvhdE_V5Ik";
+    var chat_id = -1002129084648;
+    var url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${subscribe}&parse_mode=html`;
+
+    let api = new XMLHttpRequest();
+    api.open("GET", url, true);
+    api.send();
+
+    console.log("Subscribe successfully sended!");
+    toggleModal1();
+    form.reset();
+
+});
+
+function disableScroll1() {
+    document.body.style.setProperty('overflow', 'hidden', 'important');
+}
+
+function enableScroll1() {
+    document.body.style.removeProperty('overflow');
+}
+
+function openModal1() {
+    modal.classList.add('is-visible');
+    disableScroll1(); 
+  }
+  
+function closeModal1() {
+    modal.classList.remove('is-visible');
+    enableScroll1();
+}
+  
+function toggleModal1() {
+    document.body.classList.toggle('modal-open');
+    modal.classList.toggle('is-visible');
+    backdrop.classList.toggle('is-hidden');
+}
+
+const blog__form = document.querySelector("#blog-one__form");
+
+const blog__modal = document.querySelector("#blog-one__modal");
+
+const blog__backdrop = document.querySelector("#blog-one__backdrop");
+
+const blog__button = document.querySelector("#blog-one__modal-button");
+
+blog__form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    var name = document.getElementById("blog-one__name").value;
+    var email = document.getElementById("blog-one__email").value;
+    var comment = document.getElementById("blog-one__comment").value;
+
+    var review = `New comment from ${name}: "${comment}"%0AEmail: ${email}`;
+
+    var token = "6828458385:AAEkkfRrubAAFUAsgwMrywmMzigojFGJ3To";
+    var chat_id = -1002129084648;
+    var url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${review}&parse_mode=html`;
+
+    let api = new XMLHttpRequest();
+    api.open("GET", url, true);
+    api.send();
+
+    console.log("Review successfully sended!");
+    toggleModal2();
+    blog__form.reset();
+
+});
+
+function disableScroll2() {
+    document.body.style.setProperty('overflow', 'hidden', 'important');
+}
+
+function enableScroll2() {
+    document.body.style.removeProperty('overflow');
+}
+
+function openModal2() {
+  blog__modal.classList.add('is-visible');
+    disableScroll2(); 
+  }
+  
+  function closeModal2() {
+    blog__modal.classList.remove('is-visible');
+    enableScroll2();
+  }
+  
+  function toggleModal2() {
+    document.body.classList.toggle('modal-open');
+    blog__modal.classList.toggle('is-visible');
+    blog__backdrop.classList.toggle('is-hidden');
+  }

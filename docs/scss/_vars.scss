@@ -13,3 +13,32 @@ $default: #5A5A5A;
 @function min($numbers...) {
   @return m#{i}n(#{$numbers});
 }
+
+@mixin mq($screen) {
+  $mobile: 480px;
+  $tablet: 768px;
+  $desktop: 1200px;
+    
+  @if $screen == mobile {
+      @media screen and (min-width: $mobile) {
+      @content;
+      }
+  } @else if $screen == tablet {
+      @media screen and (min-width: $tablet) {
+      @content;
+      }
+  } @else if $screen == desktop {
+      @media screen and (min-width: $desktop) {
+      @content;
+      }
+  } @else if $screen == retina {
+      @media screen and (min-device-pixel-ratio: 2),
+      screen and (-moz-min-device-pixel-ratio: 2),
+      screen and (-o-min-device-pixel-ratio: 2/1),
+      screen and (-webkit-min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      @content;
+      }
+  }
+}
